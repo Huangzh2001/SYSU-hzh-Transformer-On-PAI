@@ -29,10 +29,6 @@ def main(args):
     tb_writer = SummaryWriter(log_dir="runs/hzh_swin_unet")
 
     # 训练集、测试集路径
-    # train_x_path = 'D:/Document/DataSet/hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Rec photos/train_images_x'
-    # train_y_path = 'D:/Document/DataSet/hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Pre photos/train_images_y'
-    # val_x_path = 'D:/Document/DataSet/hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Rec photos/val_images_x'
-    # val_y_path = 'D:/Document/DataSet/hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Pre photos/val_images_y'
     train_x_path = './hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Rec photos/train_images_x'
     train_y_path = './hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Pre photos/train_images_y'
     val_x_path = './hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Rec photos/val_images_x'
@@ -70,11 +66,8 @@ def main(args):
     # 实例化transformer模型
     model = create_model().to(device)
 
-    model.load_state_dict(torch.load('./weights/model-9.pth'))
-
-    # 将模型写入tensorboard
-    # init_img = torch.zeros((1, 1, 448, 448), device=device)
-    # tb_writer.add_graph(model, init_img)
+    # 中断训练后如果想继续，则用下面的代码读取之前训练的模型
+    # model.load_state_dict(torch.load('./weights/model-9.pth'))
 
     # 实例化优化器（adamw）
     # 优化器的第一个参数是我们想训练的参数，lr是学习率
@@ -87,7 +80,7 @@ def main(args):
 
     for epoch in range(args.epochs):
         # 训练
-        epoch = epoch + 10
+        epoch = epoch
         train_loss = train_one_epoch(model=model,
                                     optimizer=optimizer,
                                     data_loader=train_loader,

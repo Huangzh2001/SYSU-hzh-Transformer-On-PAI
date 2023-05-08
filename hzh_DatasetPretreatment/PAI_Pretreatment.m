@@ -2,17 +2,15 @@ close all;clear all;clc;
 %% 1.批量读取数据
 % 1.读取文件夹信息
 % 医学图像的地址
-maindir = 'D:\Downloads\BaiduNetdiskDownload\Skin Cancer MNIST\Skin Cancer MNIST\HAM10000_images_part_2';
+maindir = '..\DataSet\Skin Cancer MNIST\HAM10000_images_part_1';
 % 预处理后的图像存放地址
-prestoredir = 'D:\Downloads\BaiduNetdiskDownload\Skin Cancer MNIST Pre photos\HAM10000_images_part_2';
+prestoredir = '..\DataSet\Skin Cancer MNIST Pre photos\HAM10000_images_part_1';
 
 % 2.读取文件夹内所有图片的路径
 subdir = fullfile(maindir, '*.jpg');
 imgdir = dir(subdir);
 % 3.获取文件夹内所有图片个数
 imgnum = length(imgdir);
-
-t1=clock;
 
 %% 2.读取图片
 for i=1:1:imgnum
@@ -33,12 +31,4 @@ for i=1:1:imgnum
     norI_Gray=norI_Gray/max(max(abs(norI_Gray)));
     % imshow(norI_Gray,'border','tight','initialmagnification','fit');
     imwrite(norI_Gray,fullfile(prestoredir,[imgdir(i).name(1:end-4),'.jpg']))
-
-
-    % set(gcf,'Position',[300 300 600 450]); 
-    % set(gca,'Position',[0 0 1 1]);
-    % axis normal;
-    % saveas(gca,fullfile(prestoredir,[imgdir(i).name(1:end-4),'.bmp']));
 end
-t2=clock;
-etime(t2,t1)

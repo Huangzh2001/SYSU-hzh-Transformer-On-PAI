@@ -45,9 +45,9 @@ def predict_img(img_path):
 
 if __name__ == '__main__':
     # 要预测的图片所在的路径
-    img_path = "D:/Document/DataSet/sore"
+    img_path = "./hzh_SwinT_50_sensor_Data/Crop Skin Cancer MNIST Rec photos/val_images_x"
     # 预测完成后的图片所在路径
-    store_path = "D:/Document/DataSet/predict"
+    store_path = "./predict photos"
 
     # 批量预测img_path中的所有图片，并将预测结果存放在store_path中
     list_of_files = os.listdir(img_path)
