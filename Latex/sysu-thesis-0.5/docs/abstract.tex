@@ -1,0 +1,29 @@
+%%
+% 摘要信息
+% 本文档中前缀"c-"代表中文版字段, 前缀"e-"代表英文版字段
+% 摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、内容、方法、成果和结论。要突出本论文的创造性成果或新见解，不要与引言相 混淆。语言力求精练、准确，以 300—500 字为宜。
+% 在摘要的下方另起一行，注明本文的关键词（3—5 个）。关键词是供检索用的主题词条，应采用能覆盖论文主要内容的通用技术词条(参照相应的技术术语 标准)。按词条的外延层次排列（外延大的排在前面）。摘要与关键词应在同一页。
+% modifier: 黄俊杰(huangjj27, 349373001dc@gmail.com)
+% update date: 2017-04-15
+%%
+
+\cabstract{
+
+    本项目研究如何提高光声成像重构结果。研究过程中发现在现有光声成像重建算法下，重建图像质量与采集数据的传感器数量成正比。而较多的传感器数量往往带来高昂的仪器成本，从而阻碍光声成像技术的普及。但目前光声成像局限于研究领域的现状，使得控制光声成像成本相关的研究比较匮乏。为此，本研究采用深度学习探究在低成本下得到高质量光声成像重建图像的方法。
+    
+    本研究创新性地将Transformer模型引入光声成像重建领域，使用k-Wave进行光声成像仿真并生成了有关皮肤癌的医学图像数据集。基于该数据集搭建与训练了Swin-Unet神经网络，并运用其实现了将低质量光声重建图像优化为高质量医学图像的模型，为降低光声成像成本提供了一种解决办法。
+
+}
+% 中文关键词(每个关键词之间用“，”分开,最后一个关键词不打标点符号。)
+\ckeywords{光声成像，\ Transformer，\ 图像重构，\ k-Wave}
+
+\eabstract{
+    % 英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
+    This project investigates how to improve the quality of photoacoustic imaging reconstruction images. During the study we find that under the existing photoacoustic imaging reconstruction algorithms, the quality of the reconstructed image is directly proportional to the number of sensors collecting data. A large number of sensors often brings high instrument costs, which hinders the popularization of photoacoustic imaging technology. However, at present, photoacoustic imaging is limited to research field, which makes the research related to controlling the cost of photoacoustic imaging relatively lacking. Therefore, this study uses deep learning to explore the method of obtaining high-quality photoacoustic imaging reconstruction images at low cost.
+    
+    In this study, we innovatively introduce the Transformer model into the field of photoacoustic imaging reconstruction, use k-Wave for photoacoustic imaging simulation, and build a medical image dataset on skin cancer. Based on this dataset, a Swin-Unet neural network is built to optimize low-quality photoacoustic reconstruction images into high-quality medical images, which provides a solution for reducing the cost of photoacoustic imaging.
+    
+}
+% 英文文关键词(每个关键词之间用,分开, 最后一个关键词不打标点符号。)
+\ekeywords{Photoacoustic Imaging, \ Transformer, \ Image Reconstruction, \ k-Wave}
+

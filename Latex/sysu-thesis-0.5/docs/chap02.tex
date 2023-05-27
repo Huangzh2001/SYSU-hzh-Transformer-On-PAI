@@ -1,0 +1,126 @@
+\chapter{光声成像的理论基础}
+
+\label{cha:sysu-thesis-contents-format-requirement}
+
+\section{光声成像的波动方程}
+假设$p(x,t)$为位于整个采集表面S上位置$x$的点在时刻$t$($t$≥0)的压力值。并且记位于表面S上位置$y$的点状声波探测器在观测时刻$t$获得的声波压力数据为函数$g(y,t)$，即$g(y,t):=p(y,t) \ for \ y\in S,t\geqslant0$。
+
+于是我们得到一个波动方程：
+\begin{equation} \label{201}
+	\left\{
+	\begin{aligned}
+		& p_{tt}=c^2(x)\vartriangle _xp,\quad t\geqq0,x\in\mathbb{R}^3\\
+		& p(x,0)=f(x),p_t(x,0)=0 \\
+		& p|_s = g(y,t),\quad (y,t)\in S\times\mathbb{R}^+.
+	\end{aligned}
+	\right.
+\end{equation}
+其中，$f(x)$是声压的初始值。因此，光声成像的目标是使用传感器的测量数据$g(y,t)$，反推出上述波动方程$p(x,t)$在t=0处的初始值$f(x)$。
+
+我们做如下记号：
+
+定义1：我们使用$\mathcal{W}$表示正算子，即$\mathcal{W}:f(x)\to g(y,t)$,其中$f$与$g$的定义同上述波动方程。
+
+如果成像介质是均匀的，即$c(x)$等于一个常数，我们假设该常数在适当的单位下等于1。此时，波动方程为：
+\begin{equation} \label{202}
+	\left\{
+	\begin{aligned}
+		& p_{tt}=\vartriangle _xp \quad \quad \ \ t\geqq0,x\in\mathbb{R}^3\\
+		& p(x,0)=f(x),p_t(x,0)=0\\
+		& p|_s = g(y,t),\quad (y,t)\in S\times\mathbb{R}^+.
+	\end{aligned}
+	\right.
+\end{equation}
+
+
+此时，根据$Poisson\ Kirchhoff$公式，我们能得到上述波动方程的解为：
+\begin{equation} \label{203}
+\begin{aligned}
+p(x,t)=a\cfrac{\partial}{\partial t}(t(Rf)(x,t)).
+\end{aligned}
+\end{equation}
+其中$(Rf)(x,r):=\cfrac{1}{4\pi}\int_{|y|=1} f(x+ry)\, dA(y)$是作用于函数$f(x)$的球面平均算子，$dA$是$\mathbb{R}^3$单位球面上的标准面积元，$a$为常数。
+
+从上述公式可以得知，$p(x,t)$由函数$f$的球面平均值$(Rf)(x,t)$唯一决定。我们将这个这个球面平均算子作用在$f$上的映射$R:f→R$f记为$\mathcal{M}$，即：
+\begin{equation} \label{204}
+	\begin{aligned}
+		\mathcal{M}f(x,t):=\cfrac{1}{4\pi}\int_{|y|=1} f(x+ry)\, dA(y),\quad x\in S,t\geqq0.
+	\end{aligned}
+\end{equation}
+因此，在成像介质是均匀的情况下，我们可以选择使用$\mathcal{M}$来代替$p(x,t)$进行研究。
+
+\section{光声成像的重建算法}
+对于成像介质是均匀介质的情况（此时$c(x)$为常数），有上面的讨论可得，光声成像的图像重建等效于求解球面均值变换$\mathcal{M}$的逆。
+下面介绍几种常见的光声成像重建方法：
+
+\subsection{幂级数解法}
+将$f$和$g$进行傅里叶分解后，即
+
+\begin{equation} \label{205}
+	\begin{aligned}
+		f(x)=\sum_{-\infty}^{+\infty} f_k(\rho )e^{ik\varphi},\quad x=(\rho cos(\varphi),\rho sin(\varphi)).
+	\end{aligned}
+\end{equation}
+
+\begin{equation} \label{206}
+	\begin{aligned}
+		g(y(\theta),r)=\sum_{-\infty}^{+\infty}g_k(r)e^{ik\theta},\quad y=(Rcos(\theta),Rsin(\theta)).
+	\end{aligned}
+\end{equation}
+
+将其代入到公式(\ref{203})中，由等式两边系数相等可得：
+
+\begin{equation} \label{207}
+	\begin{aligned}
+		f_k(\rho)=\mathcal{H}_m(\cfrac{1}{J_k(\lambda|R|)}\mathcal{H}_0\big[ \cfrac{g_k(r)}{2\pi r}\big]).
+	\end{aligned}
+\end{equation}
+
+其中$(\mathcal{H}_mu)(s)=2\pi \int_{0}^{\infty}u(t)J_m(st)t dt$为Hankel变换，$J_m(t)$为贝塞尔函数。
+
+应该注意的是，幂级数解法依赖于在球面几何中成立的变量分离，因此这种方法仅在球面上成立。
+
+
+\subsection{特征函数展开法}
+
+设$\lambda_m$和$u_m(x)$为封闭曲面S内部Ω的狄利克雷-拉普拉斯算子$−\vartriangle$的特征值和特征函数的正交基，满足：
+
+\begin{equation} \label{208}
+\left\{
+\begin{aligned}
+	& \vartriangle u_m(x)+\lambda_m^2u_m(x)=0,\quad x\in \Omega,\Omega\subseteq \mathbb{R}^n\\
+	& u_m(x)=0,\quad \quad \quad \qquad \qquad x\in S\\
+	& ||u_m||_2^2\equiv\int_{\Omega}|u_m(x)|^2dx=1.
+\end{aligned}
+\right.
+\end{equation}
+
+可解得：
+
+\begin{equation} \label{209}
+	\begin{aligned}
+		u_m(x)=\int_{S}\Phi_{\lambda_m}(|x-y|)\cfrac{\partial}{\partial n}u_m(y)ds(y),\quad x\in\Omega.
+	\end{aligned}
+\end{equation}
+
+其中$\Phi_{\lambda_m}(|x-y|)$是亥姆霍兹方程的自由空间格林函数，$n$是$S$的外法向量。
+
+函数$f(x)$可以展开成级数：
+
+\begin{equation} \label{210}
+	\begin{aligned}
+		f(x)=\sum_{m=0}^{\infty}\alpha_mu_m(x),\quad where\ \alpha_m=\int_{\Omega}u_m(x)f(x)dx.
+	\end{aligned}
+\end{equation}
+
+如果将表示形式 ( \ref{209} ) 替换为表示形式( \ref{210} )并交换积分顺序，则可以得到$\alpha_m$。
+
+\begin{equation} \label{211}
+	\begin{aligned}
+		& \alpha_m=\int_{\Omega}u_m(x)f(x)dx=\int_S I(y,\lambda_m)\cfrac{\partial}{\partial n}u_m(y)dA(x),\\
+		& where\\
+		& I(y,\lambda)=\int_{\Omega}\Phi_{\lambda}(|x-y|)f(x)dx=\int_0^{diam\Omega}g(y,r)\Phi_{\lambda}(r)dr.
+	\end{aligned}
+\end{equation}
+
+将$\alpha_m$代入级数(\ref{210})就能得到重建公式$f(x)$。
