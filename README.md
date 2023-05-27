@@ -18,7 +18,7 @@
 
 * 评估与分析训练结果兼论文作图
 
-* 论文latex代码
+* 答辩PPT与论文latex代码
 
 ## 三、代码详解
 
@@ -143,3 +143,19 @@
 * plot_training_loss_img.ipynb
   
   简介：画出训练模型时不同epoch下loss的变化曲线。图片存放在Image文件夹。
+
+## 6、答辩PPT与论文latex代码
+
+* 答辩PPT存放在文件夹PPT中。
+
+* 论文latex代码存放在文件夹Latex中。该论文模板来自于项目（[sysu/sysuthesis: sysuthesis based on pkuthss. (github.com)](https://github.com/sysu/sysuthesis)）。在此感谢该模板的制作人员。另：由于上传github可能会导致某些损失导致latex编译失败，想要继续修改的话，可以在论文模板项目中下载文件后，替换下面的文件重新编译latex：
+  
+  * image文件夹
+  
+  * main.tex
+  
+  * main.bib
+
+# 四、结语
+
+由于时间仓促，作者只是尽可能地修改并上传了各代码。但并没有运行与验证过代码，所以可能会存在Bug。这可能需要您修改。以上。
